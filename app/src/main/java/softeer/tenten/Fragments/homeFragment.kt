@@ -1,60 +1,61 @@
 package softeer.tenten.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import softeer.tenten.Category.CategoryItemModel
+import softeer.tenten.Category.CategoryRVAdapter
+//import softeer.tenten.Category.CategoryItemModel
 import softeer.tenten.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [homeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class homeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private val items = mutableListOf<CategoryItemModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment homeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            homeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        //////////////////// RVAdapter에 전달할 데이터 담기 ////////////////////
+        items.add(CategoryItemModel("test1.png", "스타벅스", "타이틀", "장소", "날짜"))
+        items.add(CategoryItemModel("test1.png", "스타벅스2", "타이틀", "장소", "날짜"))
+        items.add(CategoryItemModel("test1.png", "스타벅스3", "타이틀", "장소", "날짜"))
+        items.add(CategoryItemModel("test1.png", "스타벅스4", "타이틀", "장소", "날짜"))
+
+        val recyclerview = view.findViewById<RecyclerView>(R.id.categoryRV)
+        val rvAdapter = CategoryRVAdapter(requireContext(), items)
+        recyclerview.adapter = rvAdapter
+
+        //////////////////////////// 웹 뷰 //////////////////////////////
+//        아이템 클릭시 새로운 액티비티로 (웹뷰) 이동 이벤트 주기 위해 추가한 부분
+        rvAdapter.itemClick =
+            object : CategoryRVAdapter.ItemClick {
+                override fun onClick(view: View, position: Int) {
+//                    // 선택한 아이템의 정보 담아서 액티비티 이동. 해당 액티비티에서 웹 뷰 띄워줌!
+//                    val intent = Intent(baseContext, ViewActivity::class.java)
+//                    intent.putExtra("url", items[position].url)
+//                    intent.putExtra("title", items[position].titleText)
+//                    intent.putExtra("imageUrl", items[position].imageUrl)
+//
+//                    startActivity(intent)
                 }
             }
+
+        // 한 줄에 항목 2개씩 나옴
+        recyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        return view
     }
 }

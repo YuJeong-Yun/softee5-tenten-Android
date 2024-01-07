@@ -109,7 +109,8 @@
                     android:layout_height="577dp"
                     android:orientation="vertical"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="22dp">
 
                     <!--타이틀-->
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,6 +139,11 @@
                         android:layout_weight="10"
                         android:orientation="vertical">
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/categoryRV"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
                     </LinearLayout><!--컨텐츠-->
                 </LinearLayout>
 
@@ -149,7 +155,8 @@
                     android:layout_height="285dp"
                     android:orientation="vertical"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="22dp">
 
                     <!--타이틀-->
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,7 +196,8 @@
                     android:layout_height="240dp"
                     android:orientation="vertical"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="22dp">
 
                     <!--타이틀-->
                     <androidx.constraintlayout.widget.ConstraintLayout
