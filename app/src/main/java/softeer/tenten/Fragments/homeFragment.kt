@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import softeer.tenten.Category.CategoryExpectedOpenRVAdapter
 import softeer.tenten.Category.CategoryItemModel
 import softeer.tenten.Category.CategoryRVAdapter
+import softeer.tenten.Category.CategoryRecommendCarRVAdapter
 import softeer.tenten.R
 
 
@@ -51,11 +53,11 @@ class homeFragment : Fragment() {
         rvNearCar.adapter = CategoryRVAdapter(requireContext(), nearCarItems)
 
         val rvRecommendCar = view.findViewById<RecyclerView>(R.id.categoryRecommendCar)
-        rvRecommendCar.adapter = CategoryRVAdapter(requireContext(), recommendCarItems)
+        rvRecommendCar.adapter = CategoryRecommendCarRVAdapter(requireContext(), recommendCarItems)
 
 
         val rvExpectedOpen = view.findViewById<RecyclerView>(R.id.categoryExpectedOpen)
-        rvExpectedOpen.adapter = CategoryRVAdapter(requireContext(), expectedOpen)
+        rvExpectedOpen.adapter = CategoryExpectedOpenRVAdapter(requireContext(), expectedOpen)
 
         //////////////////////////// 웹 뷰 //////////////////////////////
 //        아이템 클릭시 새로운 액티비티로 (웹뷰) 이동 이벤트 주기 위해 추가한 부분
