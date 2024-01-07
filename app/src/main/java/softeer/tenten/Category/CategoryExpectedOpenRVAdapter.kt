@@ -15,11 +15,15 @@ import com.bumptech.glide.request.RequestOptions
 import softeer.tenten.R
 import kotlin.math.log
 
-class CategoryRVAdapter(val context: Context, val List: MutableList<CategoryItemModel>) :
-    RecyclerView.Adapter<CategoryRVAdapter.ViewHolder>() {
+class CategoryExpectedOpenRVAdapter(
+    val context: Context,
+    val List: MutableList<CategoryItemModel>
+) :
+    RecyclerView.Adapter<CategoryExpectedOpenRVAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.category_rv_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.category_rv_item_expected_open, parent, false)
 
         return ViewHolder(v)
     }
@@ -49,18 +53,14 @@ class CategoryRVAdapter(val context: Context, val List: MutableList<CategoryItem
             val img = itemView.findViewById<ImageView>(R.id.rvImg)
             val brand = itemView.findViewById<TextView>(R.id.rvBrand)
             val title = itemView.findViewById<TextView>(R.id.rvTitle)
-            val place = itemView.findViewById<TextView>(R.id.rvPlace)
             val date = itemView.findViewById<TextView>(R.id.rvDate)
 
             brand.text = item.brand
             title.text = item.title
-            place.text = item.place
             date.text = item.date
             // 글라이드 라이브러리 사용해 이미지 로드하면 자동 캐싱해서 성능 향상에 도움
             Glide.with(context).load(R.drawable.test1)
                 .into(img)
-
-
         }
     }
 }
