@@ -10,8 +10,9 @@
     <!-- 팝업 스토어 설명 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="647dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
 
         <!--사진-->
         <ImageView
@@ -83,8 +84,8 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="27dp"
                 android:layout_marginRight="10dp"
                 android:elevation="0dp"
                 app:cardCornerRadius="10dp">
@@ -216,6 +217,30 @@
                         android:src="@drawable/icon_up" />
                 </LinearLayout><!--이동일정 접기-->
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--이동 일정 -->
+            <LinearLayout
+                android:id="@+id/moveSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="15dp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/move_schedule" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout><!--이동 스케줄-->
 
             <!--시간-->
             <LinearLayout

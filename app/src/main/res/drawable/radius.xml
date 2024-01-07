@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#FF0000" />
+    <!-- 모서리를 둥글게 설정 (radius 속성 사용) -->
+    <corners android:radius="20dp" />
+</shape>
