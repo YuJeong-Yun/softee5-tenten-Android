@@ -1,8 +1,6 @@
 package softeer.tenten.Category
 
 import android.content.Context
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import softeer.tenten.R
-import kotlin.math.log
 
-class CategoryRVAdapter(val context: Context, val List: MutableList<CategoryItemModel>) :
-    RecyclerView.Adapter<CategoryRVAdapter.ViewHolder>() {
+class CategoryNearCarRVAdapter(val context: Context, val List: MutableList<CategoryItemModel>) :
+    RecyclerView.Adapter<CategoryNearCarRVAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.category_rv_item, parent, false)
@@ -59,8 +54,6 @@ class CategoryRVAdapter(val context: Context, val List: MutableList<CategoryItem
             // 글라이드 라이브러리 사용해 이미지 로드하면 자동 캐싱해서 성능 향상에 도움
             Glide.with(context).load(R.drawable.test1)
                 .into(img)
-
-
         }
     }
 }
