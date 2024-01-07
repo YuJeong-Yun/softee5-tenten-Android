@@ -7,19 +7,84 @@
     android:orientation="vertical"
     tools:context=".MoreInfoActivity">
 
+    <!-- 팝업 스토어 설명 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="647dp" />
+        android:layout_height="647dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test2" />
+
+        <LinearLayout
+            style="@style/contents"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:text="푸드 · 스타벅스"
+                android:textColor="#787878"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/contents"
+            android:layout_width="match_parent"
+            android:layout_height="34dp">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STARBUCKS 뉴이어 팝업"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:background="#D4FDD0"
+                    android:gravity="center"
+                    android:text="진행중"
+                    android:textColor="#33B413"
+                    android:textSize="11dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout><!-- 팝업 스토어 설명 -->
 
     <include layout="@layout/division_line" />
 
+    <!-- 상세 페이지 하단 네비게이션 탭-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="889dp"
+        android:layout_height="wrap_content"
         app:defaultNavHost="true"
         app:navGraph="@navigation/more_info_navigation"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
+
 </LinearLayout>
