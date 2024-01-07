@@ -15,7 +15,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
+            android:layout_weight="12">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -44,7 +44,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="10.46dp"
-                        android:src="@drawable/iconsearch"
+                        android:src="@drawable/icon_search"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView3"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="16px"
-                        android:src="@drawable/iconbell"
+                        android:src="@drawable/icon_bell"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -135,7 +135,11 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="14"></LinearLayout><!--컨텐츠-->
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout><!--컨텐츠-->
                 </LinearLayout>
 
                 <include layout="@layout/division_line" />
@@ -172,7 +176,10 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="5"></LinearLayout><!--컨텐츠-->
+                        android:layout_weight="4"
+                        android:orientation="vertical">
+
+                    </LinearLayout><!--컨텐츠-->
                 </LinearLayout>
 
                 <include layout="@layout/division_line" />
@@ -209,22 +216,95 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="4"></LinearLayout><!--컨텐츠-->
+                        android:layout_weight="4"
+                        android:orientation="vertical">
+
+                    </LinearLayout><!--컨텐츠-->
                 </LinearLayout>
 
                 <include layout="@layout/division_line" />
-            </LinearLayout><!--하단 탭 제외 홈 화면-->
-        </ScrollView>
+            </LinearLayout>
+        </ScrollView><!--하단 탭 제외 홈 화면-->
 
         <!--하단 이동 탭-->
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#333"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="false">
 
-        </LinearLayout><!--하단 이동 맵-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--홈-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_home"
+                        app:tint="#7E5EED" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:text="홈"
+                        android:textColor="#7E5EED" />
+                </LinearLayout>
+
+                <!--둘러보기-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_browse" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:text="둘러보기" />
+                </LinearLayout>
+
+
+                <!--내 기록-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_home" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:text="내 기록" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView><!--하단 이동 맵-->
     </LinearLayout>
 
 </FrameLayout>
