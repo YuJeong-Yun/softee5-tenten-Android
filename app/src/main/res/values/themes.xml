@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Tenten" parent="Base.Theme.Tenten" />
+    <style name="Theme.Tenten" parent="Base.Theme.Tenten">
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
