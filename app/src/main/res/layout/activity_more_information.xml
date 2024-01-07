@@ -13,15 +13,17 @@
         android:layout_height="647dp"
         android:orientation="vertical">
 
+        <!--사진-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="25dp"
             android:scaleType="centerCrop"
             android:src="@drawable/test2" />
 
+        <!-- 카테고리/브랜드 -->
         <LinearLayout
-            style="@style/contents"
+            style="@style/contentsAlign"
             android:layout_height="wrap_content">
 
             <TextView
@@ -30,11 +32,12 @@
                 android:gravity="center"
                 android:text="푸드 · 스타벅스"
                 android:textColor="#787878"
-                android:textSize="14dp" />
-        </LinearLayout>
+                android:textSize="16dp" />
+        </LinearLayout><!-- 카테고리/브랜드 -->
 
+        <!--타이틀-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            style="@style/contents"
+            style="@style/contentsAlign"
             android:layout_width="match_parent"
             android:layout_height="34dp">
 
@@ -60,19 +63,227 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="60dp"
+                    android:layout_width="70dp"
                     android:layout_height="24dp"
                     android:background="#D4FDD0"
                     android:gravity="center"
                     android:text="진행중"
                     android:textColor="#33B413"
-                    android:textSize="11dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout><!--타이틀-->
+
+        <!--태그-->
+        <LinearLayout
+            style="@style/contentsAlign"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:elevation="0dp"
+                app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="27dp"
+                    android:background="#F0EDFC"
+                    android:gravity="center"
+                    android:text="시식가능"
+                    android:textColor="#451ECE"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout><!-- 팝업 스토어 설명 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:layout_width="55dp"
+                    android:layout_height="27dp"
+                    android:background="#F0EDFC"
+                    android:gravity="center"
+                    android:text="체험형"
+                    android:textColor="#451ECE"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout><!--태그-->
+
+        <!--본문 설명-->
+        <LinearLayout
+            style="@style/contentsAlign"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2024년 새해를 맞이해 스타벅스 팝업카가 당신에게 찾아갑니다. 일상 속에서 더 가깝게 스타벅스 팝업카를 만나보고 다양한 이벤트를 즐겨보세요!"
+                android:textSize="16dp" />
+        </LinearLayout><!--본문 설명-->
+
+        <!--기타 팝업 스토어 설명-->
+        <LinearLayout
+            style="@style/contentsAlign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--장소-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="25dp"
+                    android:layout_height="17dp"
+                    android:paddingRight="8dp"
+                    android:src="@drawable/icon_map_pin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:gravity="center"
+                    android:paddingRight="13dp"
+                    android:text="대구 신천4동 동대구역 광장"
+                    android:textColor="#787878"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--이동일정 펼치기-->
+                <LinearLayout
+                    android:id="@+id/moveScheduleOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:text="이동일정"
+                        android:textColor="#999999"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/icon_down" />
+                </LinearLayout><!--이동일정 펼치기-->
+
+                <!--이동일정 접기-->
+                <LinearLayout
+                    android:id="@+id/moveScheduleClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:text="닫기"
+                        android:textColor="#999999"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/icon_up" />
+                </LinearLayout><!--이동일정 접기-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--시간-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/icon_clock" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:gravity="center"
+                    android:text="10:00 - 17:00"
+                    android:textColor="#787878"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <!--날짜-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/icon_calendar_blank" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:gravity="center"
+                    android:text="1월8일 ~ 1월13일"
+                    android:textColor="#787878"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <!--수용인원-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/icon_map_pin" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:gravity="center"
+                    android:text="수용인원 12명 · 기아 레이"
+                    android:textColor="#787878"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+
+        </LinearLayout><!--기타 팝업 스토어 설명-->
+
+    </LinearLayout>
 
     <include layout="@layout/division_line" />
 

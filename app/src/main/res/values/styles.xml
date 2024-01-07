@@ -33,7 +33,7 @@
     </style>
 
     <!-- 컨텐츠 스타일 -->
-    <style name="contents">
+    <style name="contentsAlign">
         <item name="android:layout_width">match_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingLeft">16dp</item>
