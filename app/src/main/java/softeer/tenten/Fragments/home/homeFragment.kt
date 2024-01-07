@@ -13,7 +13,7 @@ import softeer.tenten.Category.CategoryExpectedOpenRVAdapter
 import softeer.tenten.Category.CategoryItemModel
 import softeer.tenten.Category.CategoryNearCarRVAdapter
 import softeer.tenten.Category.CategoryRecommendCarRVAdapter
-import softeer.tenten.MoreInformationActivity
+import softeer.tenten.MoreInfoActivity
 import softeer.tenten.R
 
 class homeFragment : Fragment() {
@@ -65,7 +65,7 @@ class homeFragment : Fragment() {
         rvNearCarAdapter.itemClick = object : CategoryNearCarRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 // 선택한 팝업스토어의 정보 담아서 액티비티 이동
-                val intent = Intent(requireContext(), MoreInformationActivity::class.java)
+                val intent = Intent(requireContext(), MoreInfoActivity::class.java)
                 intent.putExtra("id", nearCarItems[position].id)
                 startActivity(intent)
             }
