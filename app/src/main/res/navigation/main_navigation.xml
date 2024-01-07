@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="softeer.tenten.Fragments.homeFragment"
+        android:name="softeer.tenten.Fragments.home.homeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/browseFragment"
-        android:name="softeer.tenten.Fragments.browseFragment"
+        android:name="softeer.tenten.Fragments.home.browseFragment"
         android:label="fragment_browse"
         tools:layout="@layout/fragment_browse">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/mypageFragment"
-        android:name="softeer.tenten.Fragments.mypageFragment"
+        android:name="softeer.tenten.Fragments.home.mypageFragment"
         android:label="fragment_mypage"
         tools:layout="@layout/fragment_mypage">
         <action

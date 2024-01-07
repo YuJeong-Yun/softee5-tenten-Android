@@ -1,4 +1,4 @@
-package softeer.tenten.Fragments
+package softeer.tenten.Fragments.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import softeer.tenten.Category.CategoryItemModel
 import softeer.tenten.Category.CategoryRVAdapter
 import softeer.tenten.Category.CategoryRecommendCarRVAdapter
 import softeer.tenten.R
-
 
 class homeFragment : Fragment() {
 
