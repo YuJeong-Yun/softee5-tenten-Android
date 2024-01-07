@@ -1,4 +1,4 @@
-package softeer.tenten.Fragments.moreInfo
+package softeer.tenten.fragments.moreInfo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import softeer.tenten.R
 
-
-class MoreInfoFragment : Fragment() {
+class ReviewFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +17,7 @@ class MoreInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_more_info, container, false)
+        return inflater.inflate(R.layout.fragment_review, container, false)
     }
 
 }

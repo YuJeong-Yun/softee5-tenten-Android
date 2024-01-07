@@ -6,7 +6,7 @@
     app:startDestination="@id/moreInfoFragment2">
     <fragment
         android:id="@+id/moreInfoFragment2"
-        android:name="softeer.tenten.Fragments.moreInfo.MoreInfoFragment"
+        android:name="softeer.tenten.fragments.moreInfo.MoreInfoFragment"
         android:label="fragment_more_info"
         tools:layout="@layout/fragment_more_info" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/reviewFragment2"
-        android:name="softeer.tenten.Fragments.moreInfo.ReviewFragment"
+        android:name="softeer.tenten.fragments.moreInfo.ReviewFragment"
         android:label="fragment_review"
         tools:layout="@layout/fragment_review" >
         <action

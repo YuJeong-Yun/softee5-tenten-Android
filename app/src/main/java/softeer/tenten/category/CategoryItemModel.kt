@@ -1,4 +1,4 @@
-package softeer.tenten.Category
+package softeer.tenten.category
 
 data class CategoryItemModel(
     val id: Int = 0,

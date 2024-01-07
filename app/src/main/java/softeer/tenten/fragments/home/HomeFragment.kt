@@ -1,4 +1,4 @@
-package softeer.tenten.Fragments.home
+package softeer.tenten.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import softeer.tenten.Category.CategoryExpectedOpenRVAdapter
-import softeer.tenten.Category.CategoryItemModel
-import softeer.tenten.Category.CategoryNearCarRVAdapter
-import softeer.tenten.Category.CategoryRecommendCarRVAdapter
+import softeer.tenten.category.CategoryExpectedOpenRVAdapter
+import softeer.tenten.category.CategoryItemModel
+import softeer.tenten.category.CategoryNearCarRVAdapter
+import softeer.tenten.category.CategoryRecommendCarRVAdapter
 import softeer.tenten.MoreInfoActivity
 import softeer.tenten.R
 
-class homeFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private val nearCarItems = mutableListOf<CategoryItemModel>()
     private val recommendCarItems = mutableListOf<CategoryItemModel>()

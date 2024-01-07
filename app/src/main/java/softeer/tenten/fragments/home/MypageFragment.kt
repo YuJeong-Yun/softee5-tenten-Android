@@ -1,4 +1,4 @@
-package softeer.tenten.Fragments.home
+package softeer.tenten.fragments.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import softeer.tenten.R
 
-class mypageFragment : Fragment() {
+class MypageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
