@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/rvImg"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test1" />
+
+    <TextView
+        android:id="@+id/rvBrand"
+        style="@style/categoryThumbnail"
+        android:layout_marginTop="10dp"
+        android:text="Brand"
+        android:textColor="#787878"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/rvTitle"
+        style="@style/categoryThumbnail"
+        android:text="스타벅스"
+        android:textColor="#454545"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/rvDate"
+        style="@style/categoryThumbnail"
+        android:text="1월1일~1월30일"
+        android:textColor="#999999"
+        android:textSize="12dp" />
+
+</LinearLayout>
