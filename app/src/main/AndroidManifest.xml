@@ -16,6 +16,9 @@
             android:name=".MoreInfoActivity"
             android:exported="false" />
         <activity
+            android:name=".EventDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--네이버 지도 사용 위함-->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="kdk6rhurta" />
+
     </application>
 
 </manifest>

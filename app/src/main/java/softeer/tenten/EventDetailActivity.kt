@@ -3,7 +3,7 @@ package softeer.tenten
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import softeer.tenten.fragments.EventDetailBottomSheetFragment
+import softeer.tenten.fragments.moreInfo.EventDetailBottomSheetFragment
 
 class EventDetailActivity : AppCompatActivity() {
     private lateinit var button : Button
