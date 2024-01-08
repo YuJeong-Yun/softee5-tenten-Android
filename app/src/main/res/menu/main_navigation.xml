@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/icon_home"
+        android:title="홈" />
+    <item
+        android:id="@+id/browse"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/icon_browse"
+        android:title="둘러보기" />
+    <item
+        android:id="@+id/myPage"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/icon_mypage"
+        android:title="내 기록" />
+</menu>
