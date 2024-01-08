@@ -1,4 +1,4 @@
-package softeer.tenten.fragments
+package softeer.tenten.fragments.moreInfo
 
 import android.os.Bundle
 import android.view.LayoutInflater
