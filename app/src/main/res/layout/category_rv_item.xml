@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/rvImg"
             android:layout_width="400dp"
-            android:layout_height="160dp"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"
             android:src="@drawable/test1" />
     </androidx.cardview.widget.CardView>
