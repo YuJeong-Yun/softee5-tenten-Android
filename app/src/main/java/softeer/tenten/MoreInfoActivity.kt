@@ -3,6 +3,7 @@ package softeer.tenten
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import softeer.tenten.fragments.home.HomeFragment
 import softeer.tenten.fragments.moreInfo.EventFragment
 import softeer.tenten.fragments.moreInfo.MoreInfoFragment
 import softeer.tenten.fragments.moreInfo.ReviewFragment
+import kotlin.math.log
 
 class MoreInfoActivity : AppCompatActivity() {
 
@@ -60,6 +62,7 @@ class MoreInfoActivity : AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             // 선택된 탭에 대한 처리
             override fun onTabSelected(tab: TabLayout.Tab) {
+                Log.d("ff", tab.position.toString())
                 when (tab.position) {
                     0 -> {
                         supportFragmentManager.beginTransaction()
