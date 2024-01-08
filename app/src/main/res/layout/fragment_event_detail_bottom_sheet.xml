@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.EventDetailBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/eventBottomSheetTv1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="이벤트 참여 후 직원에게 받는"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/eventBottomSheetTv2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="인증코드"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="#0000FF"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/eventBottomSheetTv1"
+        app:layout_constraintLeft_toLeftOf="@id/eventBottomSheetTv1"/>
+
+    <TextView
+        android:id="@+id/eventBottomSheetTv3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="를 입력하세요"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/eventBottomSheetTv2"
+        app:layout_constraintLeft_toRightOf="@id/eventBottomSheetTv2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/eventBottomSheetXButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:src="@drawable/baseline_clear_24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/eventBottomSheetTv1"/>
+
+    <EditText
+        android:id="@+id/eventBottomSheetCode"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edittext_rectangle_round"
+        android:hint="인증 코드"
+        android:paddingLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@id/eventBottomSheetTv3"
+        app:layout_constraintLeft_toLeftOf="@id/eventBottomSheetTv3"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/eventBottomSheetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="참여 인증하기"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_rectangle_round"
+        app:layout_constraintLeft_toLeftOf="@id/eventBottomSheetTv3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventBottomSheetCode"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
