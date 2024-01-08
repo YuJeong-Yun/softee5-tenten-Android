@@ -2,10 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Tenten" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
+        <!-- 폰트 설정 -->
         <item name="android:fontFamily">@font/roboto</item>
+        <!-- 상태 바 설정 -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <!-- 배경색 흰색 -->
+        <item name="android:windowBackground">#FFFFFF</item>
 
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
