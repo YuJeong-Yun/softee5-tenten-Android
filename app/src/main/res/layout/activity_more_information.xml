@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -321,60 +320,54 @@
                                 android:textColor="#787878"
                                 android:textSize="13dp" />
                         </LinearLayout>
-
-
                     </LinearLayout><!--기타 팝업 스토어 설명-->
                 </LinearLayout><!--팝업 스토어 설명-->
                 <include layout="@layout/division_line" />
 
                 <!-- 상세 페이지 하단  탭-->
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="600dp">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabIndicatorFullWidth="true"
+                    app:tabIndicatorAnimationMode="linear"
+                    app:tabRippleColor="@android:color/transparent">
 
-                    <com.google.android.material.appbar.AppBarLayout
-                        android:layout_width="match_parent"
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tap_info"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                        android:text="상세정보" />
 
-                        <androidx.appcompat.widget.Toolbar
-                            android:id="@+id/toolbar"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="?colorPrimaryDark"
-                            android:elevation="1dp"
-                            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tap_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이벤트" />
 
-                            <TextView
-                                android:id="@+id/titleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="타이틀"
-                                android:textAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title" />
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tap_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="리뷰" />
 
-                        </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.tabs.TabLayout><!-- 상세 페이지 하단 네비게이션 탭-->
+                <!--탭 아래 구분선-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/grey" />
 
-                        <com.google.android.material.tabs.TabLayout
-                            android:id="@+id/tabs"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/background_light"
-                            android:elevation="1dp"
-                            app:tabGravity="fill"
-                            app:tabMode="fixed"
-                            app:tabSelectedTextColor="?colorAccent"
-                            app:tabTextColor="?colorPrimary" />
+                <!--탭에 따라 보여줄 내용-->
+                <LinearLayout
+                    android:id="@+id/main_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal" /><!--탭에 따라 보여줄 내용-->
 
-                    </com.google.android.material.appbar.AppBarLayout>
-
-
-                    <FrameLayout
-                        android:id="@+id/container"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-                </androidx.coordinatorlayout.widget.CoordinatorLayout><!-- 상세 페이지 하단 네비게이션 탭-->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
