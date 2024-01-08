@@ -62,7 +62,6 @@ class MoreInfoActivity : AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             // 선택된 탭에 대한 처리
             override fun onTabSelected(tab: TabLayout.Tab) {
-                Log.d("ff", tab.position.toString())
                 when (tab.position) {
                     0 -> {
                         supportFragmentManager.beginTransaction()
