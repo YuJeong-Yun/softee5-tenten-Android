@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="32dp">
+        android:paddingBottom="40dp">
         <!--지도 타이틀-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="17dp"
             android:layout_marginBottom="20dp"
             android:text="지도"
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <!--지도-->
@@ -86,7 +86,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="동대구역 광장, 횡단보도에서 2m"
             android:textSize="17dp" />
 
