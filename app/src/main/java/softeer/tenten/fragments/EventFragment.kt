@@ -1,4 +1,4 @@
-package softeer.tenten.Fragments
+package softeer.tenten.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import softeer.tenten.R
 import softeer.tenten.event.EventItemModel
 import softeer.tenten.event.EventRVAdapter
 
-class eventFragment : Fragment() {
+class EventFragment : Fragment() {
     private lateinit var eventRV: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
