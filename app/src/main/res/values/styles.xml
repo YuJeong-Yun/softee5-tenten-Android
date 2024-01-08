@@ -32,4 +32,11 @@
         <item name="android:maxLines">1</item>
     </style>
 
+    <!-- 컨텐츠 스타일 -->
+    <style name="contentsAlign">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
 </resources>
