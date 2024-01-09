@@ -108,14 +108,14 @@ class MoreInfoActivity : AppCompatActivity() {
         binding.standInLineBtn.setOnClickListener {
             standInLine()
 
-            // 5초 뒤에 다이얼로그 띄우기
+            // 2초 뒤에 다이얼로그 띄우기
             Handler().postDelayed({
                 // 입장 알림 다이어로그 (다이어로그 열릴 때 setView에 들어가는 뷰 새로 만들어줘야함. 이 부분 밖에 빼면 오류발생)
                 val mDialogView =
                     LayoutInflater.from(this).inflate(R.layout.waiting_alert_dlg, null)
                 val mBuilder = AlertDialog.Builder(this)
                     .setView(mDialogView)
-                    .setTitle("입장 알림")
+                    .setTitle("입장 알림").setCancelable(false)
 
                 // 다이어로그 닫기
                 val mAlertDialog = mBuilder.show()
