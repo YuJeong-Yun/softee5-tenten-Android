@@ -1,6 +1,5 @@
 package softeer.tenten
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,15 +8,12 @@ import softeer.tenten.fragments.home.BrowseFragment
 import softeer.tenten.fragments.home.HomeFragment
 import softeer.tenten.fragments.home.MypageFragment
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     private lateinit var navi: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val intent = Intent(this,LoginActivity::class.java)
-        startActivity(intent)
+        setContentView(R.layout.activity_home)
 
         navi = findViewById(R.id.bottomNavigation)
 
