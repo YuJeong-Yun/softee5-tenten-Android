@@ -480,7 +480,7 @@
 
                                     <TextView
                                         style="@style/waitingText"
-                                        android:text="현재 웨이팅 " />
+                                        android:text="내 앞 대기 " />
 
                                     <TextView
                                         android:id="@+id/waitingTeamCnt"
