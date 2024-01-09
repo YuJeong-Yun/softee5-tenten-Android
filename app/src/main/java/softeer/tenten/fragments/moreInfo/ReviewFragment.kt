@@ -1,12 +1,21 @@
 package softeer.tenten.fragments.moreInfo
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import softeer.tenten.R
+import softeer.tenten.network.api.ReviewApiService
+import softeer.tenten.network.response.BaseResponse
+import softeer.tenten.network.response.ReviewListResponse
+import softeer.tenten.network.retrofit.RetrofitApi
 import softeer.tenten.reivew.ReviewItemModel
 import softeer.tenten.reivew.ReviewRVAdapter
 
@@ -23,17 +32,42 @@ class ReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         reviewRv = view.findViewById(R.id.reviewRv)
 
-        var reviews = mutableListOf<ReviewItemModel>()
+        getReviews(1)
+    }
 
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
-        reviews.add(ReviewItemModel("test1.png", "리뷰 이름 입니다.", "방문 장소", "24.1.6 토 방문", "리뷰 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"))
+    private fun getReviews(popUpId: Long){
+        val retrofit = RetrofitApi.getInstance().create(ReviewApiService::class.java)
 
-        reviewRv.adapter = ReviewRVAdapter(requireContext(), reviews)
+        retrofit.getReviews(popUpId).enqueue(object: Callback<BaseResponse<List<ReviewListResponse>>>{
+            @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+            override fun onResponse(
+                call: Call<BaseResponse<List<ReviewListResponse>>>,
+                response: Response<BaseResponse<List<ReviewListResponse>>>
+            ) {
+                if(response.isSuccessful){
+                    val data = response.body()!!.data
+                    val reviews = data.stream().map {
+                        ReviewItemModel(it.image,
+                            it.nickname,
+                            it.destination,
+                            it.date,
+                            it.content)
+                    }.toList()
+
+                    val adapter = ReviewRVAdapter(requireContext(), reviews)
+                    reviewRv.adapter = adapter
+                } else{
+
+                }
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponse<List<ReviewListResponse>>>,
+                t: Throwable
+            ) {
+
+            }
+
+        })
     }
 }
