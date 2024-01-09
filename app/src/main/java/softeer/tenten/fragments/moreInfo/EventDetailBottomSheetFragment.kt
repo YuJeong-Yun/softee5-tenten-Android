@@ -1,21 +1,23 @@
 package softeer.tenten.fragments.moreInfo
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import softeer.tenten.EventDetailActivity
 import softeer.tenten.R
+import softeer.tenten.dialog.OnDialogResultListener
 
 class EventDetailBottomSheetFragment : BottomSheetDialogFragment() {
+    private var mListener: OnDialogResultListener? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,10 +46,11 @@ class EventDetailBottomSheetFragment : BottomSheetDialogFragment() {
 
                 alertDialogBuilder.setMessage("참여 완료되었습니다.")
 
-                // 확인 버튼 클릭시 이벤트 상세 페이지로 다시 이동
                 alertDialogBuilder.setPositiveButton("확인") { dialog, which ->
-                    startActivity(Intent(context, EventDetailActivity::class.java))
                 }
+
+                // 확인 버튼 클릭시 이벤트 상세 페이지로 다시 이동
+                sendResultToActivity(true)
 //                // 취소 버튼 설정 및 클릭 이벤트 처리
 //                alertDialogBuilder.setNegativeButton("취소") { dialog, which ->
 //                }
@@ -61,6 +64,8 @@ class EventDetailBottomSheetFragment : BottomSheetDialogFragment() {
                 alertDialogBuilder.setPositiveButton("확인") { dialog, which ->
                 }
 
+                sendResultToActivity(false)
+
                 val alertDialog: AlertDialog = alertDialogBuilder.create()
                 alertDialog.show()
             }
@@ -71,5 +76,18 @@ class EventDetailBottomSheetFragment : BottomSheetDialogFragment() {
     // db 데이터ㅓ 필요~~~~~~~~₩~~
     fun validateCode(code: String): Boolean {
         return true
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            mListener = context as OnDialogResultListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("$context must implement OnDialogResultListener")
+        }
+    }
+
+    private fun sendResultToActivity(result: Boolean) {
+        mListener?.onEventParticipateDialogResult(result)
     }
 }
