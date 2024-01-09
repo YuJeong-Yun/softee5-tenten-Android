@@ -61,9 +61,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/voteResultDialogLinearLayout"
-        app:layout_constraintBottom_toTopOf="@id/voteResultDialogCloseButton"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/vote_result_rv_item"/>
 
@@ -92,5 +90,6 @@
         android:background="@drawable/button_rectangle_round"
         app:layout_constraintLeft_toLeftOf="@id/voteResultDialogRv"
         app:layout_constraintRight_toRightOf="@id/voteResultDialogRv"
+        app:layout_constraintTop_toBottomOf="@id/voteResultDialogRv"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
