@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import softeer.tenten.R
+import softeer.tenten.vote.VoteRVAdapter
 
 class EventRVAdapter(val context: Context, val items: MutableList<EventItemModel>) :
     RecyclerView.Adapter<EventRVAdapter.ViewHolder>()  {
@@ -45,7 +46,7 @@ class EventRVAdapter(val context: Context, val items: MutableList<EventItemModel
         return items.size
     }
 
-    class ViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, listener: EventRVAdapter.onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val img = itemView.findViewById<ImageView>(R.id.rvEventImage)
         val title = itemView.findViewById<TextView>(R.id.rvEventTitle)
         val description = itemView.findViewById<TextView>(R.id.rvEventDescription)
