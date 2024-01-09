@@ -9,5 +9,5 @@ import softeer.tenten.network.response.LoginResponse
 
 interface LoginApiService {
     @POST("/api/login")
-    fun login(@Body loginRequest: LoginRequest) : Call<BaseResponse<LoginResponse>>
+    fun login(@Body loginRequest: LoginRequest): Call<BaseResponse<LoginResponse>>
 }

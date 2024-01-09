@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import softeer.tenten.R
 
-class CategoryNearCarRVAdapter(val context: Context, val List: MutableList<CategoryItemModel>) :
+class CategoryNearCarRVAdapter(val context: Context, val List: List<CategoryItemModel>) :
     RecyclerView.Adapter<CategoryNearCarRVAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
@@ -52,7 +52,8 @@ class CategoryNearCarRVAdapter(val context: Context, val List: MutableList<Categ
             place.text = item.place
             date.text = item.date
             // 글라이드 라이브러리 사용해 이미지 로드하면 자동 캐싱해서 성능 향상에 도움
-            Glide.with(context).load(R.drawable.test1)
+            Glide.with(context)
+                .load(item.img)
                 .into(img)
         }
     }
