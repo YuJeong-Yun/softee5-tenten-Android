@@ -5,28 +5,43 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
+import org.w3c.dom.Text
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import softeer.tenten.databinding.ActivityMoreInfoBinding
 import softeer.tenten.fragments.moreInfo.EventFragment
 import softeer.tenten.fragments.moreInfo.MoreInfoFragment
 import softeer.tenten.fragments.moreInfo.ReviewFragment
+import softeer.tenten.network.api.WaitingApiService
+import softeer.tenten.network.request.WaitingRequest
+import softeer.tenten.network.response.BaseResponse
+import softeer.tenten.network.response.WaitingResponse
+import softeer.tenten.network.retrofit.RetrofitApi
+import softeer.tenten.util.App
 
 
 class MoreInfoActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMoreInfoBinding
+    var waitingNumber = 0
 
-    private lateinit var binding: ActivityMoreInfoBinding;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_more_info)
 
-        binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_more_info)
+        val popUpId = intent.getLongExtra("id", 0)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_info)
+
+        getWaitingInformation(popUpId)
 
         ////////// 이동일정 확인 버튼 토글
         val openScheduleBtn = binding.moveScheduleOpen
@@ -56,7 +71,7 @@ class MoreInfoActivity : AppCompatActivity() {
         ////////// 탭 동작
         val tabLayout: TabLayout = binding.tabLayout
         val moreInfoFragment: Fragment = MoreInfoFragment()
-        val eventFragment: Fragment = EventFragment()
+        val eventFragment: Fragment = EventFragment(popUpId)
         val reviewFragment: Fragment = ReviewFragment()
 
         supportFragmentManager.beginTransaction().replace(R.id.main_view, moreInfoFragment).commit()
@@ -106,13 +121,17 @@ class MoreInfoActivity : AppCompatActivity() {
         // db 데이터 필요~~~
         // 실제로는 해당하는 유저에게 푸쉬 알림 => 우선 지금은 2초 뒤에 다이어로그 띄우도록 구현
         binding.standInLineBtn.setOnClickListener {
-            standInLine()
+            standInLine(popUpId)
 
             // 2초 뒤에 다이얼로그 띄우기
             Handler().postDelayed({
                 // 입장 알림 다이어로그 (다이어로그 열릴 때 setView에 들어가는 뷰 새로 만들어줘야함. 이 부분 밖에 빼면 오류발생)
                 val mDialogView =
                     LayoutInflater.from(this).inflate(R.layout.waiting_alert_dlg, null)
+
+                val waitingNumberTv = mDialogView.findViewById<TextView>(R.id.waitingAlertWaitingNumber)
+                waitingNumberTv.text = waitingNumber.toString()
+
                 val mBuilder = AlertDialog.Builder(this)
                     .setView(mDialogView)
                     .setTitle("입장 알림").setCancelable(false)
@@ -127,7 +146,7 @@ class MoreInfoActivity : AppCompatActivity() {
         }
 
         if (chInLine) { // 이미 대기하고 있는 사람
-            showWaitingStatusBtn()
+            // showWaitingStatusBtn()
         } else { // 대기 가능한 사람
             showStandInLineBtn()
         }
@@ -148,12 +167,14 @@ class MoreInfoActivity : AppCompatActivity() {
         binding.waitingContainer.visibility = View.GONE
     }
 
-    fun showWaitingStatusBtn() {
+    fun showWaitingStatusBtn(waitingNumber: Int, orderNumber: Int) {
         binding.standInLineContainer.visibility = View.GONE
         binding.waitingContainer.visibility = View.VISIBLE
 
         // 현재 웨이팅 팀 수 표시
         // 내 대기번호 표시
+        binding.waitingNum.text = waitingNumber.toString()
+        binding.waitingTeamCnt.text = orderNumber.toString()
     }
 
     // 대기하고 있는 팝업 스토어인지 확인
@@ -166,9 +187,57 @@ class MoreInfoActivity : AppCompatActivity() {
         showStandInLineBtn()
     }
 
+    fun getWaitingInformation(popUpId: Long){
+        val retrofit = RetrofitApi.getInstance().create(WaitingApiService::class.java)
+        val userId = App.prefs.getString("id", "")
+
+        retrofit.getWaitingInformation(popUpId, userId).enqueue(object: Callback<BaseResponse<WaitingResponse>>{
+            override fun onResponse(
+                call: Call<BaseResponse<WaitingResponse>>,
+                response: Response<BaseResponse<WaitingResponse>>
+            ) {
+                if(response.isSuccessful){
+                    val data = response.body()!!.data
+
+                    showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
+                    waitingNumber = data.waitingNumber
+                } else{
+                    showStandInLineBtn()
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
+
+            }
+
+        })
+    }
+
     // 대기 줄서기
-    fun standInLine() {
-        showWaitingStatusBtn()
+    fun standInLine(popUpId: Long) {
+        val retrofit = RetrofitApi.getInstance().create(WaitingApiService::class.java)
+        val userId = App.prefs.getString("id", "")
+
+        retrofit.registerWaiting(popUpId, WaitingRequest(userId)).enqueue(object: Callback<BaseResponse<WaitingResponse>>{
+            override fun onResponse(
+                call: Call<BaseResponse<WaitingResponse>>,
+                response: Response<BaseResponse<WaitingResponse>>
+            ) {
+                if(response.isSuccessful){
+                    val data = response.body()!!.data
+
+                    showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
+                    waitingNumber = data.waitingNumber
+                } else{
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
+
+            }
+
+        })
     }
 
 }

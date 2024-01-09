@@ -3,7 +3,6 @@ package softeer.tenten
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -17,6 +16,7 @@ import softeer.tenten.network.api.EventApiService
 import softeer.tenten.network.response.BaseResponse
 import softeer.tenten.network.response.EventDetailResponse
 import softeer.tenten.network.retrofit.RetrofitApi
+import softeer.tenten.util.App
 
 class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
     private lateinit var participateBtn: AppCompatButton
@@ -37,7 +37,7 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
         val popUpId = intent.getLongExtra("popUpId", 0)
         val eventId = intent.getLongExtra("eventId", 0)
 
-        bottomSheet = EventDetailBottomSheetFragment()
+        bottomSheet = EventDetailBottomSheetFragment(popUpId, eventId)
 
         participateBtn = findViewById(R.id.participateBtn) // 참여 인증 버튼
         completeParticipateBtn = findViewById(R.id.completeParticipateBtn) // 참여 완료 버튼
@@ -46,13 +46,18 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
         title = findViewById(R.id.eventDetailTitleContent)
         content = findViewById(R.id.eventDetailContent)
 
+        participateBtn.setOnClickListener {
+            bottomSheet.show(supportFragmentManager, "open bottom sheet")
+        }
+
         getEventDetail(popUpId, eventId)
     }
 
     private fun getEventDetail(popUpId: Long, eventId: Long){
         val retrofit = RetrofitApi.getInstance().create(EventApiService::class.java)
+        val userId = App.prefs.getString("id", "")
 
-        retrofit.getEventDetail(popUpId, eventId).enqueue(object: Callback<BaseResponse<EventDetailResponse>>{
+        retrofit.getEventDetail(popUpId, eventId, userId).enqueue(object: Callback<BaseResponse<EventDetailResponse>>{
             override fun onResponse(
                 call: Call<BaseResponse<EventDetailResponse>>,
                 response: Response<BaseResponse<EventDetailResponse>>
@@ -69,6 +74,9 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
                         .override(328, 194)
                         .into(image)
 
+                    if(data.status == 1){
+                        setButtonDisable()
+                    }
                 } else{
 
                 }
@@ -82,20 +90,15 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
         })
     }
 
-    private fun setButton(status: Int){
-        if(status == 1){
-            participateBtn.visibility = View.GONE
-            completeParticipateBtn.visibility = View.VISIBLE
-        } else if(status == 0){
-            bottomSheet.show(supportFragmentManager, "open bottom sheet")
-        }
+    private fun setButtonDisable(){
+        participateBtn.isEnabled = false
+        participateBtn.text = "참여 완료"
+        participateBtn.setTextColor(Color.BLACK)
     }
 
     override fun onEventParticipateDialogResult(result: Boolean?) {
         if(result!!){
-            participateBtn.setTextColor(Color.parseColor("#000000"))
-            participateBtn.isEnabled = false
-            participateBtn.text = "참여 완료"
+            setButtonDisable()
         }
     }
 }
