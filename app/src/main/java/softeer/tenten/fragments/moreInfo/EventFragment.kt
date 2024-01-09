@@ -21,7 +21,7 @@ import softeer.tenten.network.response.BaseResponse
 import softeer.tenten.network.response.EventsResponse
 import softeer.tenten.network.retrofit.RetrofitApi
 
-class EventFragment : Fragment() {
+class EventFragment(val popUpId: Long) : Fragment() {
     private lateinit var eventRV: RecyclerView
 
     override fun onCreateView(
@@ -35,10 +35,10 @@ class EventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         eventRV = view.findViewById(R.id.event_rv)
 
-        getEvents(2)
+        getEvents()
     }
 
-    private fun getEvents(popUpId: Long){
+    private fun getEvents(){
         val retrofit = RetrofitApi.getInstance().create(EventApiService::class.java)
 
         retrofit.getEvents(popUpId).enqueue(object: Callback<BaseResponse<List<EventsResponse>>>{
