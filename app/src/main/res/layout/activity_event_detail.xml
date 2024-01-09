@@ -7,45 +7,45 @@
     tools:context=".EventDetailActivity">
 
     <TextView
-        android:id="@+id/eventDetailTitle"
+        android:id="@+id/eventDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:text="행사 이름 입니다."
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/eventDetailCardView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/eventDetailCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="328dp"
+        android:layout_height="194dp"
         android:layout_margin="15dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailTitle"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailTitle">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailName">
 
         <ImageView
             android:id="@+id/eventDetailImg"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/eventDetailInformation"
+        android:id="@+id/eventDetailTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="📌 행사 안내"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailTitle"
+        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
         app:layout_constraintTop_toBottomOf="@id/eventDetailCardView" />
 
     <TextView
-        android:id="@+id/eventDetailInformationContent"
+        android:id="@+id/eventDetailTitleContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -53,9 +53,9 @@
         android:layout_marginRight="15dp"
         android:text="행사 안내 내용 입니다."
         android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailTitle"
+        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailInformation" />
+        app:layout_constraintTop_toBottomOf="@id/eventDetailTitle" />
 
     <TextView
         android:id="@+id/eventDetailNotice"
@@ -65,11 +65,11 @@
         android:text="📌 NOTICE"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailTitle"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailInformationContent" />
+        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailTitleContent" />
 
     <TextView
-        android:id="@+id/eventDetailNoticeContent"
+        android:id="@+id/eventDetailContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -77,7 +77,7 @@
         android:layout_marginRight="15dp"
         android:text="NOTICE 내용 입니다"
         android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailTitle"
+        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/eventDetailNotice" />
 
