@@ -38,41 +38,42 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun login(loginRequest: LoginRequest){
+    fun login(loginRequest: LoginRequest) {
         Log.d("login", "in login method")
 
         val retrofit = RetrofitApi.getInstance().create(LoginApiService::class.java)
 
-        retrofit.login(loginRequest).enqueue(object: retrofit2.Callback<BaseResponse<LoginResponse>>{
-            override fun onResponse(
-                call: Call<BaseResponse<LoginResponse>>,
-                response: Response<BaseResponse<LoginResponse>>
-            ) {
-                Log.d("login", "in login communication")
+        retrofit.login(loginRequest)
+            .enqueue(object : retrofit2.Callback<BaseResponse<LoginResponse>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<LoginResponse>>,
+                    response: Response<BaseResponse<LoginResponse>>
+                ) {
+                    Log.d("login", "in login communication")
 
-                if(response.isSuccessful){
-                    val body = response.body()!!.data
-                    val id = body.userId
-                    val nickname = ""
+                    if (response.isSuccessful) {
+                        val body = response.body()!!.data
+                        val id = body.userId
+                        val nickname = ""
 
-                    try {
-                        App.prefs!!.setString("id", id)
-                        App.prefs!!.setString("nickname", nickname)
+                        try {
+                            App.prefs!!.setString("id", id)
+                            App.prefs!!.setString("nickname", nickname)
 
-                        val intent = Intent(applicationContext, HomeActivity::class.java)
-                        startActivity(intent)
+                            val intent = Intent(applicationContext, HomeActivity::class.java)
+                            startActivity(intent)
 
-                        finish()
-                    }catch (e:Exception){
-                        Log.d("login", e.message!!)
+                            finish()
+                        } catch (e: Exception) {
+                            Log.d("login", e.message!!)
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
-                Log.d("login", "failed login communication")
-                Log.d("login", t.toString())
-            }
-        })
+                override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
+                    Log.d("login", "failed login communication")
+                    Log.d("login", t.toString())
+                }
+            })
     }
 }
