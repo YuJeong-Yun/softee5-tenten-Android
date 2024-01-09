@@ -16,6 +16,9 @@
             android:name=".MoreInfoActivity"
             android:exported="false" />
         <activity
+            android:name=".ExpectedOpenActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventDetailActivity"
             android:exported="false" />
         <activity
