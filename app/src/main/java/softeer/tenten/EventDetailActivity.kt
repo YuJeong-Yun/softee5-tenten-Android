@@ -43,7 +43,7 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
         completeParticipateBtn = findViewById(R.id.completeParticipateBtn) // 참여 완료 버튼
         name = findViewById(R.id.eventDetailName)
         image = findViewById(R.id.eventDetailImg)
-        title = findViewById(R.id.eventDetailTitle)
+        title = findViewById(R.id.eventDetailTitleContent)
         content = findViewById(R.id.eventDetailContent)
 
         getEventDetail(popUpId, eventId)
