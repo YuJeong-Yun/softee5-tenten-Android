@@ -1,10 +1,16 @@
 package softeer.tenten
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.DatePicker
+import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
@@ -91,6 +97,11 @@ class MoreInfoActivity : AppCompatActivity() {
         ////////// 대기 버튼 동작
         // db 데이터 필요. 줄서 있는지 여부 확인~~~
         val chInLine: Boolean = validateInLine()
+        // 입장 알림 다이어로그
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.waiting_alert_dlg, null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("입장 알림")
 
         // 대기 취소 버튼 클릭 시
         // db 데이터 필요 ~~~~
@@ -99,8 +110,15 @@ class MoreInfoActivity : AppCompatActivity() {
         }
         // 대기 줄서기 버튼 클릭 시
         // db 데이터 필요~~~
+        // 실제로는 해당하는 유저에게 푸쉬 알림 => 우선 지금은 5초 뒤에 다이어로그 띄우도록 구현
         binding.standInLineBtn.setOnClickListener {
             standInLine()
+
+            val mAlertDialog = mBuilder.show() // 다이어로그 열기
+            mAlertDialog.findViewById<AppCompatButton>(R.id.okBtn).setOnClickListener {
+
+                mAlertDialog.dismiss() // 다이어로그 종료
+            }
         }
 
 
@@ -137,7 +155,7 @@ class MoreInfoActivity : AppCompatActivity() {
 
     // 대기하고 있는 팝업 스토어인지 확인
     fun validateInLine(): Boolean {
-        return true
+        return false
     }
 
     // 대기 취소
@@ -149,4 +167,5 @@ class MoreInfoActivity : AppCompatActivity() {
     fun standInLine() {
         showWaitingStatusBtn()
     }
+
 }
