@@ -393,7 +393,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
                         <!--대기 줄서기 버튼-->
                         <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/standInLine"
+                            android:id="@+id/standInLineBtn"
                             android:layout_width="305dp"
                             android:layout_height="60dp"
                             android:background="@drawable/button_rectangle_round"
@@ -415,10 +415,10 @@
 
                         <!--대기 취소 버튼-->
                         <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/cancleWaitingBtn"
                             android:layout_width="120dp"
                             android:layout_height="60dp"
-                            android:background="@drawable/button_rectangle_round"
-                            android:enabled="false"
+                            android:background="@drawable/button_disable_rectangle_round"
                             android:text="대기 취소"
                             android:textColor="#7E5EED"
                             android:textSize="20dp"
