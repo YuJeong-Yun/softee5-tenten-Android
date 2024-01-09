@@ -8,10 +8,12 @@
     android:orientation="vertical"
     tools:context=".fragments.moreInfo.EventFragment">
 
+    <!--타이틀-->
     <TextView
         style="@style/infoTitle"
         android:text="진행중인 이벤트" />
 
+    <!--이벤트 리스트-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,4 +26,6 @@
             app:spanCount="2"
             tools:listitem="@layout/event_rv_item" />
     </LinearLayout>
+
+
 </LinearLayout>
