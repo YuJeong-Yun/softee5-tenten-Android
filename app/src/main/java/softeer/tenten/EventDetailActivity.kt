@@ -23,6 +23,8 @@ class EventDetailActivity : AppCompatActivity() {
             completeParticipateBtn.visibility = View.VISIBLE
         } else { // 참여 가능한 사람
             participateBtn.setOnClickListener {
+                participateBtn.visibility = View.VISIBLE
+                completeParticipateBtn.visibility = View.GONE
                 bottomSheet.show(supportFragmentManager, "open bottom sheet")
             }
         }
