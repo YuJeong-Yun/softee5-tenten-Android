@@ -1,7 +1,7 @@
 package softeer.tenten.category
 
 data class CategoryItemModel(
-    val id: Int = 0,
+    val id: Long = 0,
     val img: String = "",
     val brand: String = "",
     val title: String = "",

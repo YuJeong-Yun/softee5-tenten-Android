@@ -60,6 +60,11 @@ class MoreInfoFragment : Fragment(), OnMapReadyCallback {
         )
         naverMap.cameraPosition = cameraPosition
 
+        // 줌버튼 제거
+        val uiSettings = naverMap.uiSettings
+        uiSettings.isZoomControlEnabled = false
+
+
         // 마커 추가
         val marker = Marker()
         marker.icon = OverlayImage.fromResource(softeer.tenten.R.drawable.icon_marker)
