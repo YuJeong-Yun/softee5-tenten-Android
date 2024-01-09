@@ -39,6 +39,7 @@
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
     </style>
+    <!--홈 화면-->
 
     <!--상세정보-->
     <!-- 탭 내용 타이틀 스타일-->
@@ -57,6 +58,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">#ffffff</item>
-
     </style>
+    <!--상세정보-->
+
+    <!--입장 알림 다이어로그-->
+    <style name="alertEntrance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#454545</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

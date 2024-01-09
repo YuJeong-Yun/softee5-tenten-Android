@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/contentsAlign"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/alertEntrance"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:text="입장 알림" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이제 입장할 시간이에요!"
+        android:textColor="#454545"
+        android:textSize="17dp" />
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/icon_alert_entrance" />
+
+    <!--대기 번호 포함 입장 알림 문구-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/alertEntrance"
+            android:text="대기번호 " />
+
+        <TextView
+            style="@style/alertEntrance"
+            android:text="0"
+            android:textColor="#7E5EED" />
+
+        <TextView
+            style="@style/alertEntrance"
+            android:text="번 고객님" />
+    </LinearLayout><!--대기 번호 포함 입장 알림 문구-->
+
+    <TextView
+        style="@style/alertEntrance"
+        android:text="지금 입장해 주세요" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="5분 동안 미 입장시 대기가 자동 취소되며, 다시 대기 등록을 해주셔야 합니다."
+        android:textSize="16dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/okBtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#7E5EED"
+            android:text="확인"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
