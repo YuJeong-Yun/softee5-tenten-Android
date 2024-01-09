@@ -7,7 +7,7 @@ class LoginSharedPreferences(context: Context) {
     private val PREFS_FILENAME = "login"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
 
-    fun getString(key: String, defValue: String):String{
+    fun getString(key: String, defValue: String): String{
         return prefs.getString(key,defValue).toString()
     }
 
