@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import softeer.tenten.ExpectedOpenActivity
 import softeer.tenten.category.CategoryExpectedOpenRVAdapter
 import softeer.tenten.category.CategoryItemModel
 import softeer.tenten.category.CategoryNearCarRVAdapter
@@ -59,7 +60,8 @@ class HomeFragment : Fragment() {
 
 
         val rvExpectedOpen = view.findViewById<RecyclerView>(R.id.categoryExpectedOpen)
-        rvExpectedOpen.adapter = CategoryExpectedOpenRVAdapter(requireContext(), expectedOpen)
+        val rvExpectedOpenAdapter = CategoryExpectedOpenRVAdapter(requireContext(), expectedOpen)
+        rvExpectedOpen.adapter = rvExpectedOpenAdapter
 
         // 아이템 클릭시 상세 정보로 이동
         rvNearCarAdapter.itemClick = object : CategoryNearCarRVAdapter.ItemClick {
@@ -71,6 +73,14 @@ class HomeFragment : Fragment() {
             }
         }
 
+        rvExpectedOpenAdapter.itemClick = object : CategoryExpectedOpenRVAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+                // 선택한 팝업스토어의 정보 담아서 액티비티 이동
+                val intent = Intent(requireContext(), ExpectedOpenActivity::class.java)
+                intent.putExtra("id", expectedOpen[position].id)
+                startActivity(intent)
+            }
+        }
 
         rvNearCar.layoutManager = GridLayoutManager(requireContext(), 2)
         // 수평 정렬

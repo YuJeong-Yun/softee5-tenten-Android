@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_unselect_round"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.VoteResultDialogFragment">
+
+    <TextView
+        android:id="@+id/voteResultDialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="투표 현황"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/voteResultDialogLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/voteResultDialogTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/voteResultDialogNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지금 "
+            android:textSize="15dp"
+            android:textColor="#737373"/>
+
+        <TextView
+            android:id="@+id/voteResultDialogHigherLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="광주"
+            android:textSize="15dp"
+            android:textColor="#7E5EED"/>
+
+        <TextView
+            android:id="@+id/voteResultDialogHigherMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="의 투표율이 높네요!"
+            android:textSize="15dp"
+            android:textColor="#737373"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/voteResultDialogRv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/voteResultDialogLinearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/vote_result_rv_item"/>
+
+    <ImageButton
+        android:id="@+id/voteResultDialogXButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:background="@null"
+        android:src="@drawable/baseline_clear_24"
+        app:layout_constraintTop_toTopOf="@id/voteResultDialogTitle"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/voteResultDialogCloseButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="닫기"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_rectangle_round"
+        app:layout_constraintLeft_toLeftOf="@id/voteResultDialogRv"
+        app:layout_constraintRight_toRightOf="@id/voteResultDialogRv"
+        app:layout_constraintTop_toBottomOf="@id/voteResultDialogRv"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
