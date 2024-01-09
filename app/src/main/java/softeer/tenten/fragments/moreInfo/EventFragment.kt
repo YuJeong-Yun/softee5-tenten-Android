@@ -23,6 +23,7 @@ import softeer.tenten.network.retrofit.RetrofitApi
 
 class EventFragment : Fragment() {
     private lateinit var eventRV: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,6 +58,10 @@ class EventFragment : Fragment() {
                     adapter.setOnItemClickListener(object: EventRVAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
                             val intent = Intent(context, EventDetailActivity::class.java)
+
+                            intent.putExtra("popUpId", popUpId)
+                            intent.putExtra("eventId", data[position].id)
+
                             startActivity(intent)
                         }
                     })
