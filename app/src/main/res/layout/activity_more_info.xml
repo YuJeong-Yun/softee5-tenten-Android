@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -368,6 +368,153 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" /><!--탭에 따라 보여줄 내용-->
 
+
+                <include layout="@layout/division_line" />
+                <!--대기 / 줄서기 버튼 container-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/contentsAlign"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <!--줄서기 버튼 container-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/standInLineContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <!--북마크 기호-->
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/icon_bookmark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--대기 줄서기 버튼-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/standInLineBtn"
+                            android:layout_width="305dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/button_rectangle_round"
+                            android:text="대기 줄서기"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout><!--줄서기 버튼 container-->
+
+                    <!--대기 버튼 container-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/waitingContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <!--대기 취소 버튼-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/cancleWaitingBtn"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/button_disable_rectangle_round"
+                            android:text="대기 취소"
+                            android:textColor="#7E5EED"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <!--대기 중 전체 버튼-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="250dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/button_rectangle_round"
+                            android:enabled="false"
+                            android:gravity="start"
+                            android:paddingLeft="17dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="7dp"
+                                android:text="대기중"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <!--구분선-->
+                            <LinearLayout
+                                android:id="@+id/linearLayout3"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:background="#c3b6f7"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView5"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <!--웨이팅 & 대기번호-->
+                            <LinearLayout
+                                gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="13dp"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                                app:layout_constraintTop_toTopOf="parent">
+                                <!--현재 웨이팅-->
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        style="@style/waitingText"
+                                        android:text="현재 웨이팅 " />
+
+                                    <TextView
+                                        android:id="@+id/waitingTeamCnt"
+                                        style="@style/waitingText"
+                                        android:text="0" />
+
+                                    <TextView
+                                        style="@style/waitingText"
+                                        android:text="팀" />
+                                </LinearLayout>
+                                <!--내 대기번호-->
+                                <LinearLayout
+                                    style="@style/waitingText"
+                                    android:textColor="#c3b6f7">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="내 대기번호 "
+                                        android:textColor="#c3b6f7" />
+
+                                    <TextView
+                                        android:id="@+id/waitingNum"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:textColor="#c3b6f7" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout><!--대기 버튼 container-->
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout><!--대기/줄서기 버톤-->
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

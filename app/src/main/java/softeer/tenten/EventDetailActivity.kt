@@ -47,8 +47,6 @@ class EventDetailActivity : AppCompatActivity(), OnDialogResultListener {
         content = findViewById(R.id.eventDetailContent)
 
         getEventDetail(popUpId, eventId)
-
-
     }
 
     private fun getEventDetail(popUpId: Long, eventId: Long){
