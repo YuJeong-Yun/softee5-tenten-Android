@@ -22,18 +22,6 @@ interface PopUpStoreService {
         @Path(value = "id") id: Long,
     ): Call<BaseResponse<PopUpDetail>>
 
-//    // 팝업 스토어 투표 내역 조회
-//    @GET("/api/pop-up/{id}/vote")
-//    fun getPopUpVoteRecord(
-//        @Path(value = "id") id: String,
-//    ): Call<BaseResponse<PopUpDetail>>
-//
-//    // 팝업 스토어 지역 투표
-//    @POST("/api/pop-up/{id}/vote")
-//    fun votePopUp(
-//        @Path(value = "id") id: String,
-//    ): Call<BaseResponse<PopUpDetail>>
-
 
 }
 
