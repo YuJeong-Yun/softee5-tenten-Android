@@ -55,7 +55,7 @@ class ExpectedOpenActivity : AppCompatActivity(), OnDialogResultListener {
 
                     if(data.myVoteNumber != -1L){
                         binding.apply {
-                            expectedOpenVote.text = "투표 결과 보기"
+                            expectedOpenVote.text = "투표 현황 보기"
                         }
                     }
                 }
@@ -74,7 +74,7 @@ class ExpectedOpenActivity : AppCompatActivity(), OnDialogResultListener {
     override fun onEventParticipateDialogResult(result: Boolean?) {
         if(result!!){
             binding.apply {
-                expectedOpenVote.text = "투표 결과 보기"
+                expectedOpenVote.text = "투표 현황 보기"
             }
         }
     }
