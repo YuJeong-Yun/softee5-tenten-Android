@@ -1,12 +1,10 @@
 package softeer.tenten
 
-import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,19 +12,13 @@ import retrofit2.Response
 import softeer.tenten.databinding.ActivityExpectedOpenBinding
 import softeer.tenten.dialog.OnDialogResultListener
 import softeer.tenten.fragments.VoteDialogFragment
-import softeer.tenten.fragments.VoteResultDialogFragment
+import softeer.tenten.network.api.PopUpStoreService
 import softeer.tenten.network.api.VoteApiService
 import softeer.tenten.network.response.BaseResponse
+import softeer.tenten.network.response.PopUpDetail
 import softeer.tenten.network.response.VoteInformationResponse
-import softeer.tenten.network.response.VoteResult
 import softeer.tenten.network.retrofit.RetrofitApi
 import softeer.tenten.util.App
-import softeer.tenten.vote.VoteItemModel
-import softeer.tenten.vote.VoteRVAdapter
-import softeer.tenten.network.api.PopUpStoreService
-import softeer.tenten.network.response.BaseResponse
-import softeer.tenten.network.response.PopUpDetail
-import softeer.tenten.network.retrofit.RetrofitApi
 
 class ExpectedOpenActivity : AppCompatActivity(), OnDialogResultListener {
     private lateinit var binding: ActivityExpectedOpenBinding

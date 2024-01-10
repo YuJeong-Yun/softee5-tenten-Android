@@ -2,11 +2,8 @@ package softeer.tenten.network.api
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Path
-import softeer.tenten.network.request.LoginRequest
 import softeer.tenten.network.response.BaseResponse
-import softeer.tenten.network.response.LoginResponse
 import softeer.tenten.network.response.PopUpDetail
 import softeer.tenten.network.response.PopUpList
 
