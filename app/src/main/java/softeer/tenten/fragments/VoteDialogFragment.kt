@@ -80,12 +80,11 @@ class VoteDialogFragment(private val popUpId: Long) : DialogFragment() {
             ) {
                 if(response.isSuccessful){
                     val data = response.body()!!.data
+
                     if(data.myVoteNumber != -1L){
-                        VoteResultDialogFragment(popUpId).show(parentFragmentManager, "vote result dialog open")
+                        VoteResultDialogFragment(popUpId).show(parentFragmentManager.beginTransaction(), "vote result dialog open")
                         dismiss()
                     }
-
-                    view.visibility = View.VISIBLE
 
                     val voteItems = data.voteResults.stream().map {
                         VoteItemModel(it.id, it.name)
@@ -112,10 +111,9 @@ class VoteDialogFragment(private val popUpId: Long) : DialogFragment() {
                     })
 
                     voteRv.adapter = adapter
-
-                } else{
-                    view.visibility = View.VISIBLE
                 }
+
+                view.visibility = View.VISIBLE
             }
 
             override fun onFailure(
