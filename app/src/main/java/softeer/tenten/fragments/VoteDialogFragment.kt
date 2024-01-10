@@ -4,20 +4,15 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageButton
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.util.rangeTo
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -29,14 +24,10 @@ import softeer.tenten.network.api.VoteApiService
 import softeer.tenten.network.request.VoteRequest
 import softeer.tenten.network.response.BaseResponse
 import softeer.tenten.network.response.VoteInformationResponse
-import softeer.tenten.network.response.VoteResult
 import softeer.tenten.network.retrofit.RetrofitApi
-import softeer.tenten.reivew.ReviewItemModel
-import softeer.tenten.reivew.ReviewRVAdapter
 import softeer.tenten.util.App
 import softeer.tenten.vote.VoteItemModel
 import softeer.tenten.vote.VoteRVAdapter
-import softeer.tenten.vote.VoteResultItemModel
 
 class VoteDialogFragment(private val popUpId: Long) : DialogFragment() {
     private lateinit var voteRv: RecyclerView
