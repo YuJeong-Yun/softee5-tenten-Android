@@ -55,7 +55,7 @@ class CategoryRecommendCarRVAdapter(
             date.text = item.date
             // 글라이드 라이브러리 사용해 이미지 로드하면 자동 캐싱해서 성능 향상에 도움
             Glide.with(context)
-                .load(item.img)
+                .load(item.image)
                 .into(img)
         }
     }
