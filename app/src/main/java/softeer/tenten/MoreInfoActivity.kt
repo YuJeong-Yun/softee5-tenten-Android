@@ -135,7 +135,7 @@ class MoreInfoActivity : AppCompatActivity() {
                     mDialogView.findViewById<TextView>(R.id.waitingAlertWaitingNumber)
                 waitingNumberTv.text = waitingNumber.toString()
 
-                val mBuilder = AlertDialog.Builder(this).setView(mDialogView).setTitle("입장 알림")
+                val mBuilder = AlertDialog.Builder(this).setView(mDialogView)
                     .setCancelable(false)
 
                 // 다이어로그 닫기

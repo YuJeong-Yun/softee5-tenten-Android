@@ -33,10 +33,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/eventDetailCardView"
-            android:layout_width="350dp"
+            android:layout_width="370dp"
             android:layout_height="194dp"
             android:layout_margin="15dp"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="5dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/eventDetailName">
@@ -113,7 +113,7 @@
         <!--참여 인증하기 버튼-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/participateBtn"
-            android:layout_width="350dp"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_rectangle_round"
