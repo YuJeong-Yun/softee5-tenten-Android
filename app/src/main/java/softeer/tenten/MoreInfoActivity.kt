@@ -2,6 +2,7 @@ package softeer.tenten
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import org.w3c.dom.Text
 import retrofit2.Call
@@ -20,9 +22,11 @@ import softeer.tenten.databinding.ActivityMoreInfoBinding
 import softeer.tenten.fragments.moreInfo.EventFragment
 import softeer.tenten.fragments.moreInfo.MoreInfoFragment
 import softeer.tenten.fragments.moreInfo.ReviewFragment
+import softeer.tenten.network.api.PopUpStoreService
 import softeer.tenten.network.api.WaitingApiService
 import softeer.tenten.network.request.WaitingRequest
 import softeer.tenten.network.response.BaseResponse
+import softeer.tenten.network.response.PopUpDetail
 import softeer.tenten.network.response.WaitingResponse
 import softeer.tenten.network.retrofit.RetrofitApi
 import softeer.tenten.util.App
@@ -129,12 +133,12 @@ class MoreInfoActivity : AppCompatActivity() {
                 val mDialogView =
                     LayoutInflater.from(this).inflate(R.layout.waiting_alert_dlg, null)
 
-                val waitingNumberTv = mDialogView.findViewById<TextView>(R.id.waitingAlertWaitingNumber)
+                val waitingNumberTv =
+                    mDialogView.findViewById<TextView>(R.id.waitingAlertWaitingNumber)
                 waitingNumberTv.text = waitingNumber.toString()
 
-                val mBuilder = AlertDialog.Builder(this)
-                    .setView(mDialogView)
-                    .setTitle("입장 알림").setCancelable(false)
+                val mBuilder = AlertDialog.Builder(this).setView(mDialogView).setTitle("입장 알림")
+                    .setCancelable(false)
 
                 // 다이어로그 닫기
                 val mAlertDialog = mBuilder.show()
@@ -151,6 +155,7 @@ class MoreInfoActivity : AppCompatActivity() {
             showStandInLineBtn()
         }
 
+        getPopUpDetail(popUpId)
     }
 
     // 사이즈 조절 위한 확장 함수
@@ -187,30 +192,31 @@ class MoreInfoActivity : AppCompatActivity() {
         showStandInLineBtn()
     }
 
-    fun getWaitingInformation(popUpId: Long){
+    fun getWaitingInformation(popUpId: Long) {
         val retrofit = RetrofitApi.getInstance().create(WaitingApiService::class.java)
         val userId = App.prefs.getString("id", "")
 
-        retrofit.getWaitingInformation(popUpId, userId).enqueue(object: Callback<BaseResponse<WaitingResponse>>{
-            override fun onResponse(
-                call: Call<BaseResponse<WaitingResponse>>,
-                response: Response<BaseResponse<WaitingResponse>>
-            ) {
-                if(response.isSuccessful){
-                    val data = response.body()!!.data
+        retrofit.getWaitingInformation(popUpId, userId)
+            .enqueue(object : Callback<BaseResponse<WaitingResponse>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<WaitingResponse>>,
+                    response: Response<BaseResponse<WaitingResponse>>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()!!.data
 
-                    showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
-                    waitingNumber = data.waitingNumber
-                } else{
-                    showStandInLineBtn()
+                        showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
+                        waitingNumber = data.waitingNumber
+                    } else {
+                        showStandInLineBtn()
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
+                override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
 
-            }
+                }
 
-        })
+            })
     }
 
     // 대기 줄서기
@@ -218,23 +224,61 @@ class MoreInfoActivity : AppCompatActivity() {
         val retrofit = RetrofitApi.getInstance().create(WaitingApiService::class.java)
         val userId = App.prefs.getString("id", "")
 
-        retrofit.registerWaiting(popUpId, WaitingRequest(userId)).enqueue(object: Callback<BaseResponse<WaitingResponse>>{
+        retrofit.registerWaiting(popUpId, WaitingRequest(userId))
+            .enqueue(object : Callback<BaseResponse<WaitingResponse>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<WaitingResponse>>,
+                    response: Response<BaseResponse<WaitingResponse>>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()!!.data
+
+                        showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
+                        waitingNumber = data.waitingNumber
+                    } else {
+
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
+
+                }
+
+            })
+    }
+
+    private fun getPopUpDetail(popUpId: Long) {
+        val retrofit = RetrofitApi.getInstance().create(PopUpStoreService::class.java)
+        Log.e("test", "test")
+
+        retrofit.getPopUpDetail(popUpId).enqueue(object : Callback<BaseResponse<PopUpDetail>> {
             override fun onResponse(
-                call: Call<BaseResponse<WaitingResponse>>,
-                response: Response<BaseResponse<WaitingResponse>>
+                call: Call<BaseResponse<PopUpDetail>>, response: Response<BaseResponse<PopUpDetail>>
             ) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     val data = response.body()!!.data
 
-                    showWaitingStatusBtn(data.waitingNumber, data.orderNumber)
-                    waitingNumber = data.waitingNumber
-                } else{
+                    binding.apply {
+                        Glide.with(this@MoreInfoActivity).load(data.images[0]).into(binding.mainImg)
+                        brand.text = data.brand
+                        title.text = data.title
+                        if (data.tags.size == 1) tag1.text = data.tags[0]
+                        if (data.tags.size == 2) tag2.text = data.tags[1]
+                        introduction.text = data.introduction
+                        location.text = data.destination[0]
+                        time.text = "10:00 - 17:00"
+                        duration.text = data.duration
+                        capacity.text = "수용인원 " + data.capacity.toString() + "명"
+
+                    }
+
+                } else {
 
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse<WaitingResponse>>, t: Throwable) {
-
+            override fun onFailure(call: Call<BaseResponse<PopUpDetail>>, t: Throwable) {
+                TODO("Not yet implemented")
             }
 
         })

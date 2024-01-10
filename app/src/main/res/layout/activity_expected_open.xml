@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ExpectedOpenActivity">
-s
+    s
     <!-- 팝업 스토어 설명 -->
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -234,6 +234,7 @@ s
                     android:src="@drawable/icon_clock" />
 
                 <TextView
+                    android:id="@+id/expectedOpenTime"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:gravity="center"
@@ -255,6 +256,7 @@ s
                     android:src="@drawable/icon_calendar_blank" />
 
                 <TextView
+                    android:id="@+id/expectedOpenDuration"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:gravity="center"
@@ -276,6 +278,7 @@ s
                     android:src="@drawable/icon_map_pin" />
 
                 <TextView
+                    android:id="@+id/expectedOpenCapacity"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:gravity="center"
