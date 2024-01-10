@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
-        app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/icon_home"
-        android:title="홈" />
+        android:title="홈"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/browse"
-        app:showAsAction="ifRoom"
         android:icon="@drawable/icon_browse"
-        android:title="둘러보기" />
+        android:title="둘러보기"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/myPage"
-        app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@drawable/icon_mypage"
-        android:title="내 기록" />
+        android:title="내 기록"
+        app:showAsAction="ifRoom" />
 </menu>

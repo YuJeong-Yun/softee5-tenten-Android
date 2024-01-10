@@ -302,6 +302,7 @@
             <ImageButton
                 android:id="@+id/expectedOpenBookMark"
                 android:layout_width="50dp"
+                android:scaleType="fitXY"
                 android:layout_height="50dp"
                 android:background="@drawable/button_white_rectangle_round"
                 android:src="@drawable/icon_bookmark"
