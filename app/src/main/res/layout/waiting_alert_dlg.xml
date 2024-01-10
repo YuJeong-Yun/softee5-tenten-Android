@@ -4,6 +4,7 @@
     style="@style/contentsAlign"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
+    android:background="@drawable/waiting_dialog_round"
     android:gravity="center"
     android:orientation="vertical">
 
