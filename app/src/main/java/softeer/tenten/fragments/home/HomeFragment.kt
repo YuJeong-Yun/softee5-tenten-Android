@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
                         }.toList()
 
                         val rvNearCarAdapter =
-                            CategoryNearCarRVAdapter(requireContext(), popUpList)
+                            CategoryNearCarRVAdapter(context!!, popUpList)
                         rvNearCar.adapter = rvNearCarAdapter
 
                         rvNearCarAdapter.itemClick = object : CategoryNearCarRVAdapter.ItemClick {

@@ -97,10 +97,11 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/tag1Wrapper"
                             android:layout_width="60dp"
                             android:layout_height="27dp"
                             android:layout_marginRight="10dp"
-                            android:elevation="0dp"
+                            android:visibility="gone"
                             app:cardCornerRadius="10dp">
 
                             <TextView
@@ -116,9 +117,11 @@
 
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/tag2Wrapper"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:elevation="0dp"
+                            android:visibility="gone"
                             app:cardCornerRadius="10dp">
 
                             <TextView

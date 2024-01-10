@@ -47,8 +47,7 @@
                         android:src="@drawable/icon_search"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/black" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/imageView3"

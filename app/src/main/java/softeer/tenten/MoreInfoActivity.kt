@@ -262,8 +262,14 @@ class MoreInfoActivity : AppCompatActivity() {
                         Glide.with(this@MoreInfoActivity).load(data.images[0]).into(binding.mainImg)
                         brand.text = data.brand
                         title.text = data.title
-                        if (data.tags.size == 1) tag1.text = data.tags[0]
-                        if (data.tags.size == 2) tag2.text = data.tags[1]
+                        if (data.tags.size == 1) {
+                            tag1.text = data.tags[0]
+                            tag1Wrapper.visibility = View.VISIBLE
+                        }
+                        if (data.tags.size == 2) {
+                            tag2.text = data.tags[1]
+                            tag2Wrapper.visibility = View.VISIBLE
+                        }
                         introduction.text = data.introduction
                         location.text = data.destination[0]
                         time.text = "10:00 - 17:00"
