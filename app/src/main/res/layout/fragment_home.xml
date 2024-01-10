@@ -106,10 +106,8 @@
                 <!--내 근처 팝업카-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="577dp"
+                    android:layout_height="630dp"
                     android:orientation="vertical"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
                     android:paddingBottom="22dp">
 
                     <!--타이틀-->
@@ -121,19 +119,23 @@
                         <TextView
                             style="@style/homeMenuTitle"
                             android:text="내 근처 팝업카"
+                            android:layout_marginLeft="21dp"
+                            android:paddingTop="4dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             style="@style/homeMenuMore"
+                            android:layout_marginRight="21dp"
+                            android:paddingTop="4dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout><!--타이틀-->
 
                     <!--컨텐츠-->
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="10"
@@ -142,13 +144,21 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/categoryNearCar"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:orientation="vertical"
+                            android:layout_marginLeft="9dp"
+                            android:paddingRight="13dp"
+                            android:paddingLeft="13dp"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                             app:spanCount="2"
                             tools:listitem="@layout/category_rv_item" />
 
-                    </LinearLayout><!--컨텐츠-->
+                    </androidx.constraintlayout.widget.ConstraintLayout><!--컨텐츠-->
                 </LinearLayout>
 
                 <include layout="@layout/division_line" />
@@ -171,6 +181,7 @@
                         <TextView
                             style="@style/homeMenuTitle"
                             android:text="추천하는 팝업카"
+                            android:layout_marginLeft="6dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -220,6 +231,7 @@
                         <TextView
                             style="@style/homeMenuTitle"
                             android:text="오픈 예정 팝업카"
+                            android:layout_marginLeft="6dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

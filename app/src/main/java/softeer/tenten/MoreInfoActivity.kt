@@ -135,7 +135,7 @@ class MoreInfoActivity : AppCompatActivity() {
                     mDialogView.findViewById<TextView>(R.id.waitingAlertWaitingNumber)
                 waitingNumberTv.text = waitingNumber.toString()
 
-                val mBuilder = AlertDialog.Builder(this).setView(mDialogView).setTitle("입장 알림")
+                val mBuilder = AlertDialog.Builder(this).setView(mDialogView)
                     .setCancelable(false)
 
                 // 다이어로그 닫기
@@ -176,8 +176,13 @@ class MoreInfoActivity : AppCompatActivity() {
 
         // 현재 웨이팅 팀 수 표시
         // 내 대기번호 표시
-        binding.waitingNum.text = waitingNumber.toString()
-        binding.waitingTeamCnt.text = orderNumber.toString()
+        if(waitingNumber == 1 && orderNumber == 1){
+            binding.waitingNum.text = waitingNumber.toString()
+            binding.waitingTeamCnt.text = (orderNumber - 1).toString()
+        } else {
+            binding.waitingNum.text = waitingNumber.toString()
+            binding.waitingTeamCnt.text = orderNumber.toString()
+        }
     }
 
     // 대기하고 있는 팝업 스토어인지 확인

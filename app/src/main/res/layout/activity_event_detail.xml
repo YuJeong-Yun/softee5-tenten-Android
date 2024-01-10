@@ -4,82 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".EventDetailActivity">
 
-    <TextView
-        android:id="@+id/eventDetailName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="행사 이름 입니다."
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/eventDetailCardView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/eventDetailCardView"
-        android:layout_width="328dp"
-        android:layout_height="194dp"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="15dp"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailName">
+        app:layout_constraintRight_toRightOf="parent">
 
-        <ImageView
-            android:id="@+id/eventDetailImg"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/eventDetailTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="📌 행사 안내"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailCardView" />
+        <TextView
+            android:id="@+id/eventDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="행사 이름 입니다."
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/eventDetailCardView"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/eventDetailTitleContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="행사 안내 내용 입니다."
-        android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailTitle" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/eventDetailCardView"
+            android:layout_width="370dp"
+            android:layout_height="194dp"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventDetailName">
 
-    <TextView
-        android:id="@+id/eventDetailNotice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="📌 NOTICE"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailTitleContent" />
+            <ImageView
+                android:id="@+id/eventDetailImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"/>
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/eventDetailContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="NOTICE 내용 입니다"
-        android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailNotice" />
+        <TextView
+            android:id="@+id/eventDetailTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="📌 행사 안내"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
+            app:layout_constraintTop_toBottomOf="@id/eventDetailCardView" />
+
+        <TextView
+            android:id="@+id/eventDetailTitleContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:text="행사 안내 내용 입니다."
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventDetailTitle" />
+
+        <TextView
+            android:id="@+id/eventDetailNotice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="📌 NOTICE"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
+            app:layout_constraintTop_toBottomOf="@id/eventDetailTitleContent" />
+
+        <TextView
+            android:id="@+id/eventDetailContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:text="NOTICE 내용 입니다"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@id/eventDetailName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventDetailNotice" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -87,14 +106,14 @@
         android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <!--참여 인증하기 버튼-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/participateBtn"
-            android:layout_width="350dp"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_rectangle_round"
@@ -116,7 +135,5 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:visibility="gone" />
-
-
     </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
