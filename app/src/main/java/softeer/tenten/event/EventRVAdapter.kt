@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import softeer.tenten.R
-import softeer.tenten.vote.VoteRVAdapter
 
 class EventRVAdapter(val context: Context, val items: MutableList<EventItemModel>) :
     RecyclerView.Adapter<EventRVAdapter.ViewHolder>()  {

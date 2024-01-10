@@ -2,24 +2,21 @@ package softeer.tenten.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Response
 import softeer.tenten.ExpectedOpenActivity
 import softeer.tenten.MoreInfoActivity
+import softeer.tenten.R
 import softeer.tenten.category.CategoryExpectedOpenRVAdapter
 import softeer.tenten.category.CategoryItemModel
 import softeer.tenten.category.CategoryNearCarRVAdapter
 import softeer.tenten.category.CategoryRecommendCarRVAdapter
-import softeer.tenten.R
 import softeer.tenten.network.api.PopUpStoreService
 import softeer.tenten.network.response.BaseResponse
 import softeer.tenten.network.response.PopUpList

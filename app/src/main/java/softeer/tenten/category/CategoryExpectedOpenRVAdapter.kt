@@ -1,6 +1,7 @@
 package softeer.tenten.category
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,9 @@ class CategoryExpectedOpenRVAdapter(
                 itemClick!!.onClick(v, position)
             }
         }
+
+        Log.d("asdsa",List[position].image)
+
         holder.bindItems(List[position])
     }
 
@@ -55,7 +59,7 @@ class CategoryExpectedOpenRVAdapter(
             date.text = item.date
             // 글라이드 라이브러리 사용해 이미지 로드하면 자동 캐싱해서 성능 향상에 도움
             Glide.with(context)
-                .load(item.img)
+                .load(item.image)
                 .into(img)
         }
     }
