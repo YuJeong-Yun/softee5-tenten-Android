@@ -5,7 +5,7 @@ data class PopUpDetail(
     val category: String,
     val brand: String,
     val title: String,
-    val destinations: List<String>,
+    val destination: List<String>,
     val duration: String,
     val introduction: String,
     val tags: List<String>,
@@ -14,6 +14,7 @@ data class PopUpDetail(
     val carType: String,
     val contentImage: String,
     val otherImage: String,
+    val time: String,
     val images: List<String>,
 )
 
