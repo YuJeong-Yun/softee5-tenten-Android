@@ -14,6 +14,7 @@ data class PopUpDetail(
     val carType: String,
     val contentImage: String,
     val otherImage: String,
+    val time: String,
     val images: List<String>,
 )
 
